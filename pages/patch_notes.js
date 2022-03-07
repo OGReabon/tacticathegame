@@ -14,16 +14,18 @@ export default function PatchNotes() {
 
         <main className={styles.main}>
           <body>
-            <Flex direction="row" flexBasis="20wv">
-              <Stack direction="column" w="33vw">
-                <Link variant="contextualLink" to="#3.8">
-                  Patch 3.8
-                </Link>
-                <Link variant="contextualLink" to="#3.7">
-                  Patch 3.7
-                </Link>
+            <Flex direction="row">
+              <Stack width="20vw">
+                <Stack direction="column" position="fixed" flexBasis="33vw">
+                  <Link variant="contextualLink" href="#3.8">
+                    Patch 3.8
+                  </Link>
+                  <Link variant="contextualLink" href="#3.7">
+                    Patch 3.7
+                  </Link>
+                </Stack>
               </Stack>
-              <Stack flexBasis="80vw" paddingRight="20vw">
+              <Stack flexBasis="60vw" paddingRight="10vw" paddingLeft="10vw">
                 <div id="3.8">
                   <h1 className="patch">Patch 3.8</h1>
                   <h3 className="hotfix">HOTFIX</h3>
