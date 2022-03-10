@@ -20,7 +20,7 @@ export default function Home() {
 
         <main className={styles.main}>
           <body>
-            <Box width="80vw" height="80vh" padding="20px">
+            <Box width="80vw" height="80vh" padding="20px" paddingTop="40px">
               <h1 className={styles.title}>
                 Vítejte na hlavní stránce hry Tactica
               </h1>
