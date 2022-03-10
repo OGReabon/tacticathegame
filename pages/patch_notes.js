@@ -14,7 +14,7 @@ export default function PatchNotes() {
 
         <main className={styles.main}>
           <body>
-            <Flex direction="row">
+            <Flex direction="row" paddingTop="60px">
               <Stack width="20vw">
                 <Stack direction="column" position="fixed" flexBasis="33vw">
                   <Link variant="contextualLink" href="#3.8">

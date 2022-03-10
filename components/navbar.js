@@ -6,11 +6,14 @@ export default function Navbar() {
   return (
     <Flex
       basis="100wv"
+      width="100%"
       direction="row"
       justify="space-evenly"
       bg="white"
       paddingTop="20px"
       boxShadow="0px 5px #CDE876"
+      top={0}
+      position="fixed"
     >
       <Box>
         <Image
