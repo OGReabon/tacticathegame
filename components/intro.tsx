@@ -1,4 +1,5 @@
 import { Box, Text } from "@chakra-ui/react";
+import { EntryCollection } from "contentful";
 import client from "../resources/contentfulClient";
 
 const Intro = async (props) => {
@@ -10,10 +11,11 @@ const Intro = async (props) => {
   );
 };
 
-export async function getStaticProps() {
-  // @ts-ignore property items exists on entries but is not in the type
+Intro.getStaticProps = async () => {
   const content: {
-    items: [{ fields: { introTitle: string; introContent: string } }];
+    items:
+      | EntryCollection<{ introTitle: string; introContent: string }>
+      | unknown;
   } = await client.getEntries({ content_type: "introduction" });
   return {
     props: {
@@ -21,6 +23,6 @@ export async function getStaticProps() {
       content: content.items[0].fields.introContent,
     },
   };
-}
+};
 
 export default Intro;

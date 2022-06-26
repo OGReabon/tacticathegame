@@ -1,8 +1,7 @@
 import { Grid, GridItem, Box } from "@chakra-ui/react";
 import Head from "next/head";
-import Layout from "../components/layout";
+import { Layout, Intro, Rules, PatchNotes } from "../components";
 import styles from "../styles/Home.module.css";
-import Intro from "../components/intro";
 
 export default function Home() {
   return (
@@ -29,10 +28,14 @@ export default function Home() {
               </GridItem>
               <GridItem></GridItem>
               {/* second row */}
-              <GridItem></GridItem>
+              <GridItem>
+                <Rules />
+              </GridItem>
               <GridItem></GridItem>
               {/* third row */}
-              <GridItem></GridItem>
+              <GridItem>
+                <PatchNotes />
+              </GridItem>
               <GridItem></GridItem>
             </Grid>
           </body>
