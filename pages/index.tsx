@@ -1,9 +1,17 @@
 import { Grid, GridItem, Box } from "@chakra-ui/react";
 import Head from "next/head";
-import { Layout, Intro, Rules, PatchNotes } from "../components";
-import styles from "../styles/Home.module.css";
+import { Intro, PatchNotes, Rules, Layout, Navbar } from "../components";
+import client from "../resources/contentfulClient";
+import { Dict } from "@chakra-ui/utils";
 
-export default function Home() {
+export default function Home({ rules, patchNotes, introduction }) {
+  const styles: Dict = {
+    Grid: {
+      templateColumns: { base: "repeat(2, 1fr)", md: "repeat(1, 1fr)" },
+      gap: { base: 6, md: "10vw" },
+    },
+  };
+
   return (
     <Layout>
       <div className={styles.container}>
@@ -18,23 +26,20 @@ export default function Home() {
 
         <main className={styles.main}>
           <body>
-            <Grid
-              templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(1, 1fr)" }}
-              gap={{ base: 6, md: "10vw" }}
-            >
+            <Grid {...styles.Grid}>
               {/* first row */}
               <GridItem>
-                <Intro />
+                <Intro content={introduction} />
               </GridItem>
               <GridItem></GridItem>
               {/* second row */}
               <GridItem>
-                <Rules />
+                <Rules content={rules} preview />
               </GridItem>
               <GridItem></GridItem>
               {/* third row */}
               <GridItem>
-                <PatchNotes />
+                <PatchNotes content={patchNotes} preview />
               </GridItem>
               <GridItem></GridItem>
             </Grid>
@@ -45,4 +50,20 @@ export default function Home() {
       </div>
     </Layout>
   );
+}
+
+export async function getStaticProps() {
+  const [rules, patchNotes, introduction] = await Promise.all([
+    client.getEntries({ content_type: "rules" }),
+    client.getEntries({ content_type: "patchNotes" }),
+    client.getEntries({ content_type: "introduction" }),
+  ]);
+
+  return {
+    props: {
+      rules,
+      patchNotes,
+      introduction,
+    },
+  };
 }

@@ -1,13 +1,7 @@
-import Intro from "./intro";
-import PatchNotes from "./patchNotes";
-import Rules from "./rules";
+import Intro from "./Intro";
+import PatchNotes from "./PatchNotes";
+import Rules from "./Rules";
 import Layout from "./layout";
 import Navbar from "./navbar";
 
-export default {
-  Intro,
-  PatchNotes,
-  Rules,
-  Layout,
-  Navbar,
-};
+export { Intro, PatchNotes, Rules, Layout, Navbar };
